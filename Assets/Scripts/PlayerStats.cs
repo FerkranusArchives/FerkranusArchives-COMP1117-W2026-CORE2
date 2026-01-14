@@ -2,15 +2,77 @@ using UnityEngine;
 
 public class PlayerStats : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    // These are private fields
+    private float moveSpeed;
+    private int maxHealth;
+    private int currentHealth;
+
+   // These are public properties
+   public float MoveSpeed
     {
-        
+        get
+        {
+            return moveSpeed;
+        }
+        set
+        {
+            if (value > 20)
+            {
+                moveSpeed = 20;
+            }
+            else if(value <0)
+            {
+
+            }
+          else
+          {
+                moveSpeed = value;
+          }
+          moveSpeed = value;
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+public int MaxHealth
     {
-        
+        get
+        {
+            return maxHealth;
+        }
+        set
+        {
+            maxHealth = value;
+        }
     }
+
+
+    public int CurrentHealth
+    {
+        get
+        {
+            return currentHealth;
+        }
+        set
+        {
+            currentHealth = Mathf.Clamp(value, 0, 100);
+            Debug.Log("Health set to: { currentHealth}");
+            currentHealth = value;
+        }
+    }
+
+public PlayerStats()
+{
+    moveSpeed = 10;
+    maxHealth = 100;
+    currentHealth = 100;
+}
+
+public PlayerStats(float moveSpeed, int maxhealth)
+{
+        this.moveSpeed = moveSpeed;
+        this.maxHealth = maxHealth;
+        currentHealth = maxHealth;
+
+ Debug.Log($"Player initialized with MoveSpeed = {moveSpeed}, MaxHealth = {maxHealth}, CurrentHealth = {currentHealth}");
+}
+
 }
