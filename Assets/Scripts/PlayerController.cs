@@ -3,21 +3,26 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField] private float initialSpeed = 5;
+    [SerializeField] private int initialHealth = 100;
+
+
     private PlayerStats stats;
+    private Vector2 moveInput;
 
     // Components
     private Rigidbody2D rBody;
-
-    // Field variables
-    private Vector2 moveInput;
 
     void Awake()
     {
         // Initialize
         rBody = GetComponent<Rigidbody2D>();
 
+        stats = new PlayerStats(initialSpeed, initialHealth);
         stats = new PlayerStats();
-        int something = stats.MoveSpeed;
+        stats.MoveSpeed = initialSpeed;
+        stats.MaxHealth = initialHealth;
+        stats.CurrentHealth = initialHealth;
     }
 
     void OnMove(InputValue value)
@@ -30,10 +35,17 @@ public class PlayerController : MonoBehaviour
         ApplyMovement();
     }
 
-    void ApplyMovement()
+    private void ApplyMovement()
     {
         float velocityX = moveInput.x;
 
         rBody.linearVelocity = new Vector2(velocityX, rBody.linearVelocity.y);
     }
+
+    public void TakeDamage(int damageAmount)
+    {
+        stats.CurrentHealth -= damageAmount;
+        Debug.Log("Player took damage");
+    }
+
     }

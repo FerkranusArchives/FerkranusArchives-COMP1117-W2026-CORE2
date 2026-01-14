@@ -20,10 +20,6 @@ public class PlayerStats : MonoBehaviour
             {
                 moveSpeed = 20;
             }
-            else if(value <0)
-            {
-
-            }
           else
           {
                 moveSpeed = value;
@@ -55,7 +51,7 @@ public int MaxHealth
         {
             currentHealth = Mathf.Clamp(value, 0, 100);
             Debug.Log("Health set to: { currentHealth}");
-            currentHealth = value;
+            //currentHealth = value;
         }
     }
 
@@ -66,7 +62,7 @@ public PlayerStats()
     currentHealth = 100;
 }
 
-public PlayerStats(float moveSpeed, int maxhealth)
+public PlayerStats(float moveSpeed, int maxHealth)
 {
         this.moveSpeed = moveSpeed;
         this.maxHealth = maxHealth;
