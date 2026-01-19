@@ -42,6 +42,10 @@ public class PlayerController : MonoBehaviour
             healthBar.image.color = Color.red;
         }
         
+        if (stats.IsDead)
+        {
+            Debug.Log("Player has perished.");
+        }
     }
 
 
