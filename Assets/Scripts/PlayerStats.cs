@@ -68,10 +68,7 @@ public int MaxHealth
             if (currentHealth <= 0)
             {
                 isDead = true;
-                if (isDead)
-                {
-                    Debug.Log("Player has perished.");
-                }
+                Debug.Log("Player has perished.");
             }
             else { isDead = false; }
         }

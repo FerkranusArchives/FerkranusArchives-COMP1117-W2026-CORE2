@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
     {
         // Initialize
         rBody = GetComponent<Rigidbody2D>();
+        
 
         stats = new PlayerStats(initialSpeed, initialHealth);
         stats = new PlayerStats();
@@ -35,6 +36,12 @@ public class PlayerController : MonoBehaviour
     {
         ApplyMovement();
         healthBar.value = stats.CurrentHealth;
+        if (healthBar.value <= 0) { healthBar.image.color = Color.clear; }
+        else if (healthBar.value <= 50 && healthBar.value > 0)
+        {
+            healthBar.image.color = Color.red;
+        }
+        
     }
 
 
